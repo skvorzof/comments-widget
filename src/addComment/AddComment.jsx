@@ -16,12 +16,17 @@ export const AddComment = ({ formData }) => {
     } else {
       formData({
         autor: autor.trim(),
-        comment: comment.trim(),
+        comment: clearTags(comment).trim(),
       });
       // Очистить поля
       setAutor('');
       setComment('');
     }
+  };
+
+  //Удалить html tags
+  const clearTags = (str) => {
+    return str.replace(/<[^>]+>/gi, '');
   };
 
   return (

@@ -1,0 +1,38 @@
+.autor {
+  color: black;
+  font-weight: bold;
+  font-size: calc(4px + 2vmin);
+}
+.date {
+  color: grey;
+  font-weight: normal;
+  font-size: calc(2px + 2vmin);
+  margin-left: 5px;
+}
+.btn-remove {
+  background: transparent;
+  color: blue;
+  border: none;
+  padding: 5px 0;
+  cursor: pointer;
+  outline: none;
+}
+
+ul li {
+  list-style: none;
+  margin-top: 20px;
+}
+
+input,
+textarea,
+button {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-family: sans-serif;
+}
+button {
+  background: blue;
+  border: none;
+  color: white;
+  font-weight: bold;
+}

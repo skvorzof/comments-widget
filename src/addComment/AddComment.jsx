@@ -20,31 +20,26 @@ export const AddComment = () => {
     const comment = commentRef.current.value;
 
     // Проверка полей если пусто
-    if (autor.trim() === '') {
-      toast('Поле имя не должно быть пустым ✍️');
-    } else if (comment.trim() === '') {
-      toast('Поле комментария не должно быть пустым ✍️');
-    } else {
-      // Проверка дублирования комментария
-      const isExist = comments.some((el) => el.comment === comment);
+    if (autor.trim() === '') return toast('Поле имя не должно быть пустым ✍️');
+    if (comment.trim() === '') return toast('Напишите комментарий ✍️');
 
-      if (isExist) {
-        toast('Такой комментарий существует 👾');
-      } else {
-        const newComment = {
-          date: Date.now(),
-          autor: autor.trim(),
-          comment: clearTags(comment).trim(),
-        };
+    // Проверка дублирования комментария
+    const isExist = comments.some((el) => el.comment === comment);
 
-        setDataStore([...comments, newComment]); // Добавляем в LocalStore
+    if (isExist) return toast('Такой комментарий существует 👾');
 
-        dispatch(addComment(newComment)); // Добавляем в store
-      }
-      // Очистить поля
-      autorRef.current.value = '';
-      commentRef.current.value = '';
-    }
+    const newComment = {
+      date: Date.now(),
+      autor: autor.trim(),
+      comment: clearTags(comment).trim(),
+    };
+
+    setDataStore([...comments, newComment]); // Добавляем в LocalStore
+    dispatch(addComment(newComment)); // Добавляем в store
+
+    // Очистить поля
+    autorRef.current.value = '';
+    commentRef.current.value = '';
   };
 
   //Удалить html tags

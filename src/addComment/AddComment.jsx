@@ -16,12 +16,12 @@ export const AddComment = () => {
   const sendForm = (e) => {
     e.preventDefault();
 
-    const autor = autorRef.current.value;
-    const comment = commentRef.current.value;
+    const autor = autorRef.current.value.trim();
+    const comment = commentRef.current.value.trim();
 
     // Проверка полей если пусто
-    if (autor.trim() === '') return toast('Поле имя не должно быть пустым ✍️');
-    if (comment.trim() === '') return toast('Напишите комментарий ✍️');
+    if (autor === '') return toast('Поле имя не должно быть пустым ✍️');
+    if (comment === '') return toast('Напишите комментарий ✍️');
 
     // Проверка дублирования комментария
     const isExist = comments.some((el) => el.comment === comment);
@@ -30,8 +30,8 @@ export const AddComment = () => {
 
     const newComment = {
       date: Date.now(),
-      autor: autor.trim(),
-      comment: clearTags(comment).trim(),
+      autor,
+      comment: clearTags(comment),
     };
 
     setDataStore([...comments, newComment]); // Добавляем в LocalStore
